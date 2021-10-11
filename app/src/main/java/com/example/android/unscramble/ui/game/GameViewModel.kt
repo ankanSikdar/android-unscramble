@@ -33,6 +33,7 @@ class GameViewModel : ViewModel() {
     private fun getNextWord() {
         currentWord = allWordsList.random()
         val tempWord = currentWord.toCharArray()
+        tempWord.shuffle()
         while (tempWord.toString().equals(currentWord, false)) {
             tempWord.shuffle()
         }
@@ -54,5 +55,17 @@ class GameViewModel : ViewModel() {
             getNextWord()
             true
         } else false
+    }
+
+    fun isUserWordCorrect(playerWord: String) : Boolean {
+        if(playerWord.equals(currentWord, true)) {
+            increaseScore()
+            return true
+        }
+        return false
+    }
+
+    private fun increaseScore() {
+        _score += SCORE_INCREASE
     }
 }
