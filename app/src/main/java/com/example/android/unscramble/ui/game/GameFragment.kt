@@ -70,11 +70,6 @@ class GameFragment : Fragment() {
 
     }
 
-    override fun onDetach() {
-        super.onDetach()
-        Log.d("GameFragment", "GameFragment destroyed!")
-    }
-
 
     private fun onSubmitWord() {
         val playerWord = binding.textInputEditText.text.toString()
